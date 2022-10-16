@@ -5,5 +5,5 @@ moj drogi pamietniku, dzis nauczylem sie:
 - logowac sie na szuflandie
 - odpalac wirtualna maszyne linuxa - ubuntu
 - tworzyc katalogi i pliki na ubuntu
-
-
+- aby utworzyc wiele katalogow, sciezke, trzeba uzyc komendy mkdir i parametru -p
+- aby usunac folder wraz z plikami trzeba uzyc komendy rm i parametru -r
