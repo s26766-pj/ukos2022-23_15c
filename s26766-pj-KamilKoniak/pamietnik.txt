@@ -33,7 +33,11 @@ Wyświetl wszystkie procesy bash
 Wyświetl wszystkie procesy należące do użytkownika root
 - „ps -u root” 
 
+---------------------------------------
+
 1. linux - wstep do konsoli
+
+---------------------------------------
 
 zadanie 1, uruchom terminal:
         - mozna to zrobic uzywajac interfejsu graficznego, klikajac na
