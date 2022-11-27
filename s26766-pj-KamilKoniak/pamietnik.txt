@@ -1,3 +1,38 @@
+3 procesy i strumienie
+
+Zadanie 0
+„ls -a | grep D” - Co się stalo?
+	- komenda „ls” wyswietla zawartosc katalogu w postaci listy
+	- parametr „-a” nakazuje ignorowac wyniki oprócz tych które spelniaja 	warunek
+	- symbol „ | „ ang. pipeline nakazuje przekierowac strumien wynikow
+	- komenda „grep” wyszukuje wzorce
+	- „D” to podany wzorzec
+	- czyli: wyswietlenie listy plikow i katalogow zaczynajacych się na litere 	„D”, reszta wynikow jest zignorowana 
+
+„ls -a | grep D > lista_plikow_z_literka_d.txt” - Co to znaczy?
+- tak jak wyzej opisalem, wyswietla liste i wyszukuje wzorzec
+- symbol „>” dziala na zasiadzie dopisywania nowej linii ang. newline
+- nazwa „lista_plikow_z_literka_d.txt” wskazuje plik tekstowy do jakiego ma być zapisywany stdout (wynik / strumien wyjscia)
+
+„ls -a | grep D | tee lista_plikow_z_literka_d_2.txt”
+Jaka jest treść względem poprzedniej próby bez programu tee?
+Co robi program tee?
+- w mojej ocenie jest to taki sam efekt jak poprzednio
+- program tee zapisuje stdout do pliku, „tee” jest przydatne jeśli nie chcemy uczyc się na pamiec symboli kierunkowych
+
+Zadanie 1A
+Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+- znak zapytania pojawia się w kolumnie TTY, jest to protokol do komunikacji poprzez teletekst ang. teletypewriter. Jest to sposob komunikowania się, pomiedzy uzytkownikiem i maszyna, bash czyli terminal korzysta z TTY czyli ja uzytkownik wpisuje tekst / komunikat do maszyny, a maszyna odpowiada w taki sam sposob czyli poprzez tekst. Przy procesach które nie korzystaja z terminala pojawia się „?”
+- tak to rozumiem, a odpowiedzi udzielilem na bazie informacji z:
+www.gnu.org, stackoverflow.com i support.microsoft.com
+
+Zadanie 1B
+Wyświetl wszystkie procesy bash
+- „ps -C bash”
+- „ps axu | grep bash
+Wyświetl wszystkei procesy należące do użytkownika root
+- „ps -u root” 
+
 1. linux - wstep do konsoli
 
 zadanie 1, uruchom terminal:
