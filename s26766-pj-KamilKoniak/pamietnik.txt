@@ -30,7 +30,7 @@ Zadanie 1B
 Wyświetl wszystkie procesy bash
 - „ps -C bash”
 - „ps axu | grep bash
-Wyświetl wszystkei procesy należące do użytkownika root
+Wyświetl wszystkie procesy należące do użytkownika root
 - „ps -u root” 
 
 1. linux - wstep do konsoli
