@@ -1,0 +1,77 @@
+---------------------------------------
+
+3 procesy i strumienie
+
+---------------------------------------
+
+Zadanie 0
+„ls -a | grep D” - Co się stalo?
+	- komenda ls wyswietla zawartosc katalogu w postaci listy
+-Co robi program tee?
+- program tee zapisuje stdout do pliku, tee jest przydatne jeśli nie chcemy uczyc się na pamiec symboli kierunkowych
+
+Zadanie 1A
+
+Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+- znak zapytania pojawia się w kolumnie TTY, jest to protokol do komunikacji poprzez teletekst ang. teletypewriter. Jest to sposob komunikowania się, pomiedzy uzytkownikiem i maszyna, bash czyli terminal korzysta z TTY czyli ja uzytkownik wpisuje tekst / komunikat do maszyny, a maszyna odpowiada w taki sam sposob czyli poprzez tekst. Przy procesach które nie korzystaja z terminala pojawia się ?
+- tak to rozumiem, a odpowiedzi udzielilem na bazie informacji z:
+www.gnu.org, stackoverflow.com i support.microsoft.com
+
+Zadanie 1B
+
+Wyświetl wszystkie procesy bash
+- ps -C bash
+- ps axu | grep bash
+Wyświetl wszystkie procesy należące do użytkownika root
+- ps -u root”
+
+Zadanie 2:
+
+Zadanie do wykonania na linuxie z dostępnym środowiskiem graficznym.
+- uruchamiam Ubuntu 22.04 LTS z Gnome 42.0
+
+2.1 Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim, Visual Studio Code, atom, itd…)
+-  uruchamiam LibreOffice Writer
+
+2.2 Zobacz jaki ma on PID - przyda się do tego komenda ps
+- w konsoli wpisuje „ps axu | grep libre” i otrzymuje nr 10165 czyli PID procesu
+
+2.3 Wydaj komendę kill w taki sposób, aby ten edytor się wyłączył. Zobacz czy to działa.
+- następnie komenda „kill 10165” zamyka edytor graficzny LibreOffice Writer
+
+Zobacz czy możesz wysłać do niego SIGKILL (gdzie sprawdzisz jak to zrobić?)
+- „man kill” pokazal mi skladnie potrzebna do komendy „kill”
+- „kill -SIGKILL PID dziala rownie dobrze i nadaje się do zamykania procesu
+
+2.4 Zobacz działanie komendy killall bash
+- killall bash nie zadziala na terminal
+- ale za to killlall -u guest może być ciekawym sposobem na
+pozbycie się uzytkownika
+
+2.5 Zobacz czy kill zadziała dla dowolnego procesu.
+- kill nie zadziala na terminal – bash
+- ale za to komenda kill -SIGKILL PID-bash zadziala
+
+Zadanie 3
+
+Zobacz co się stanie:
+    1. Wydaj komendę cat > wynik3_1.txt
+    2. Wpisz tekst witaj bez wciskania klawisza Enter
+    3. Wciśnij CTRL+C
+    4. Zobacz co się znalazło w pliku wynik3_1.txt
+Wydaj komendę cat > wynik3_2.txt
+    1. Wpisz tekst witaj bez wciskania klawisza Enter
+    2. Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+    3. Zobacz co się znalazło w pliku wynik3_2.txt
+W opisie rozwiązania zadania umieść:
+    - jak rozumiesz co się stało?
+      - uzycie skrotu klawiszowego w obu przypadkach spowodowalo 
+      zamkniecie procesu cat
+    - czym oba te przykłady się różnią?
+      - tym, że CTRL+C nie zapisal tekstu
+      - a CTRL+D zapisal wpisywany tekst
+    - DLACZEGO się różnią?
+      - CTRL+C wysyla sygnal zamykajacy do procesu aktualnie uruchomionego
+      ang. abort
+      - CTRL+D wysyla sygnal koniec wpisywania (koniec stdin) 
+      ang. end of typing
