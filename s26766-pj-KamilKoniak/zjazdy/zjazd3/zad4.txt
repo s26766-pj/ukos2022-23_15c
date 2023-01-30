@@ -1,0 +1,45 @@
+CTRL+Z
+
+Wstrzymalismy program gedit.
+Program wstrzymany za pomoca kombinacji CTRL+Z
+Program jest przenoszony do  tla (background)
+Efekt jest taki, ze program przestaje odpowiadac na cokolwiek
+
+komenda bg:
+
+gedit ozyl, proces jest aktywny, powraca z tla
+komenda bg sluzy do wznowienia wstrzymanego programu
+
+komenda fg:
+
+gedit znow powrocil do konsoli mozna go teraz zamknac uzywajac CTRL+C
+
+komenda gimp &:
+
+w srodowisku graficznym uruchamia sie program gimp
+a konsola nadal jest dostepna
+pokazuje sie informacja z nr jobu i nr procesu PID
+
+komenda gedit &:
+
+w srodowisku graficznym uruchamia sie program gedit
+a konsola nadal jest dostepna
+pokazuje sie informacja z nr jobu i nr procesu PID
+
+komenda geany &:
+
+w srodowisku graficznym uruchamia sie program gimp
+a konsola nadal jest dostepna
+pokazuje sie informacja z nr jobu i nr procesu PID
+
+komenda jobs:
+
+pokazuje sie lista zadan - job
+informacje takie jak
+- nr jobu
+- status (dziala lub wstrzymano)
+- nazwa procesu
+
+komenda fg %1:
+
+pokazuje mi informacje ze job-em nr 1 jest u mnie w tej chwili gimp 

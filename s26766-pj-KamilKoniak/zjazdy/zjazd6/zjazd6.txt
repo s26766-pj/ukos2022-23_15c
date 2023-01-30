@@ -1,0 +1,92 @@
+uruchamiam windows 10
+uruchamiam powershell
+
+wpisuje Get-ExecutionPolicy
+otrzymuje: Allsinged 
+
+wpisuje Get-Module -ListAvailable
+otrzymuje tabele z informacjami na temat dostepnych modulow:
+- rodzaj
+- wersja
+- nazwa
+- lista komend
+
+aby filtrowac wyniki moge uzyc potoku
+wpisuje Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}
+otrzymuje tabele z wszystkimi modulami ktore sa wieksze lub rowne wersji 2.0.0.0
+
+"?" jest skrótem na Where-Object
+"%" jest skrótem na While-Object czyli pętlę
+"$_." prefix do kolumny
+
+filtruje wyniki dwoma filtrami Where-Object i While-Object
+wpisuje komende:
+
+ Get-Module -ListAvailable | 
+	? {$_.Version -ge "2.0.0.0"} | 
+	% {Get-Command -Module $_.Name}
+
+otrzymuje wyniki spelniajace warunek => 2.0.0.0 oraz lista dostepnych komend
+
+wpisuje komende:
+
+ Get-Module -ListAvailable |
+	 ? {$_.Version -ge "2.0.0.0"} |
+	 % {Get-Command -Module $_.Name} |
+	 ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+
+otrzymuje liste spelnajace warunek wersji oraz wsytkie dostepne komendy Get i Add
+
+wpisuje komende:
+
+ Get-Module -ListAvailable |
+	 ? {$_.Version -ge "2.0.0.0"} |
+	 % {Get-Command -Module $_.Name} |
+	 ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} |
+	 Out-GridView
+
+otrzymuje te same informacje co poprzednio ale za to sa one pokazane w nowym oknie
+
+tworze zmienna:
+
+ $nazwaPliku = "mojaNazwaPliku.txt"
+
+nastepnie uruchamiam komende:
+
+ Get-Module -ListAvailable |
+	 ? {$_.Version -ge "2.0.0.0"} |
+	 % {Get-Command -Module $_.Name} |
+	 ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} |
+	 Out-File $env:TEMP\$nazwaPliku
+
+przefiltrowane dane dostaje w postaci pliku tekstowego w lokalizacji:
+ C:\Users\kamil\AppData\Local\Temp
+
+wpisuje komende:
+
+ Get-Module -ListAvailable |
+	 ? {$_.Version -ge "2.0.0.0"} |
+	 % {Get-Command -Module $_.Name} |
+	 ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} |
+	 Out-Null
+
+efektem jest przetworzenie danych bez wypisywania ich (parametr Out-Null)
+
+importuje modul o nazwie BitsTransfer przy pomocy komendy:
+ Import-Module BitsTransfer
+
+lub przy pomocy aliasu:
+ ipmo BitsTransfer
+
+wpisuje komende:
+
+ Get-Command -Module BitsTransfer
+
+otrzymuje tabele z typem komendy, nazwa, wersja i zrodlem
+
+wpisuje komende:
+
+ Get-Start-BitsTransfer http://szuflandia.pjwstk.edu.pl/~t0meck/uko/ps-info.ps1
+
+w efekcie pobieram z serwera plik ps-info.ps1 do katalogu C:\Windows\System32\
+

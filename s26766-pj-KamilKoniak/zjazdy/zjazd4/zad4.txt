@@ -1,0 +1,6 @@
+jak zamknac program ktory nie reaguje na ctrl+c?
+
+wpisuje komende ps by sprawdzic liste procesow
+z listy biore informacje o numerze procesu ktory chce zamknac
+wywoluje komende kill -KILL nr_procesu
+

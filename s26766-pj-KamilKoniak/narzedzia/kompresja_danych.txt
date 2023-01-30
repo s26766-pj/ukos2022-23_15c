@@ -1,0 +1,22 @@
+tar - [T]ape [AR]chiver - pozwala na pakowanie i rozpakowywanie archiwow.
+
+ Korzysta z bzip2 (wolniejsza; lepsza kompresja; parametr -j)
+ oraz gzip (szybsza; slabsza kompresja; paramter -z) jako metody kompresji.
+ Jest to domyslny format plikow archiwow stosowany na wlasciwie wszystkich dystrybucjach Linuxa.
+ Zlepia wszystkie pliki/dane w jeden ciag/plik i potem poddaje go kompresji.
+ Stad powstaja pliki z wieloma rozszerzeniami tj. *.tar.gz czy *.tar.bz2
+
+gzip - narzedzie do kompresowania pojedynczych plikow.
+
+ Uzywane przez tar po "zlepieniu" wszystkich plikow w jeden ciag.
+
+bzip2 - jw tylko inny algorytm
+
+Oba powyzsze programy mozna wywolac samemu na pojedynczych plikach.
+
+time polecenie - mierzy czas wykonania polecenia np. time tar -czf plik_spakowany_gzip.tar.gz jakies_pliki
+
+zcat, zgrep, zless - programy, ktore potrafia operowac podobnie jak ich odpowiedniki
+
+ bez literki z na poczatku tylko, ze na plikach skompresowanych przez gzip bez potrzeby wczesniejszego ich
+ samodzielnego rozpakowywania.

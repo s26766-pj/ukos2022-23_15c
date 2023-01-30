@@ -1,0 +1,25 @@
+Zadanie do wykonania na linuxie z dostępnym środowiskiem graficznym.
+- uruchamiam Ubuntu 22.04 LTS z Gnome 42.0
+
+2.1 Uruchom wybrany przez Ciebie graficzny edytor tekstowy (np. gedit, gvim, Visual Studio Code, atom, itd…)
+-  uruchamiam LibreOffice Writer
+
+2.2 Zobacz jaki ma on PID - przyda się do tego komenda ps
+- w konsoli wpisuje „ps axu | grep libre” i otrzymuje nr 10165 czyli PID procesu
+
+2.3 Wydaj komendę kill w taki sposób, aby ten edytor się wyłączył. Zobacz czy to działa.
+- następnie komenda „kill 10165” zamyka edytor graficzny LibreOffice Writer
+
+Zobacz czy możesz wysłać do niego SIGKILL (gdzie sprawdzisz jak to zrobić?)
+- „man kill” pokazal mi skladnie potrzebna do komendy „kill”
+- „kill -SIGKILL PID dziala rownie dobrze i nadaje się do zamykania procesu
+
+2.4 Zobacz działanie komendy killall bash
+- killall bash nie zadziala na terminal
+- ale za to killlall -u guest może być ciekawym sposobem na
+pozbycie się uzytkownika
+
+2.5 Zobacz czy kill zadziała dla dowolnego procesu.
+- kill nie zadziala na terminal – bash
+- ale za to komenda kill -SIGKILL PID-bash zadziala
+

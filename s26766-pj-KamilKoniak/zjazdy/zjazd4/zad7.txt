@@ -1,0 +1,3 @@
+jak utworzyc plik z lista plikow w bierzacym katalogu?
+
+ls | tee lista_plikow.txt

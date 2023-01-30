@@ -1,0 +1,3 @@
+jak wypisac wszystkie pliki w bierzacym katalogu co zaczynaja sie od al?
+
+ls | grep ^al

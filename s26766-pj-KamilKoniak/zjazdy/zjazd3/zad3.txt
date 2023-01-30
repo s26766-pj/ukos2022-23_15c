@@ -1,0 +1,19 @@
+Zobacz co się stanie:
+    1. Wydaj komendę cat > wynik3_1.txt
+    2. Wpisz tekst witaj bez wciskania klawisza Enter
+    3. Wciśnij CTRL+C
+    4. Zobacz co się znalazło w pliku wynik3_1.txt
+Wydaj komendę cat > wynik3_2.txt
+    1. Wpisz tekst witaj bez wciskania klawisza Enter
+    2. Wciśnij CTRL+D (możliwe, że będzie trzeba wcisnąć go 2x)
+    3. Zobacz co się znalazło w pliku wynik3_2.txt
+W opisie rozwiązania zadania umieść:
+    - jak rozumiesz co się stało?
+      - uzycie skrotu klawiszowego w obu przypadkach spowodowalo 
+      zamkniecie procesu cat
+    - czym oba te przykłady się różnią?
+      - tym, że CTRL+C nie zapisal tekstu
+      - a CTRL+D zapisal wpisywany tekst
+    - DLACZEGO się różnią?
+      - CTRL+C wysyla sygnal zamykajacy do procesu aktualnie uruchomionego
+      - CTRL+D wysyla sygnal koniec wpisywania (EOF)

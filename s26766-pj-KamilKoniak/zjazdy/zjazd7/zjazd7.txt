@@ -1,0 +1,234 @@
+ustawiam zmienna do szybkiego logowania, wpisuje komende:
+ $cred = Get-Credential
+
+wpisuje komende:
+
+ Start-BitsTransfer
+	 -Source http://szuflandia.pjwstk.edu.pl/~t0meck/uko/ps-info.ps1
+	 -Destination "C:\"
+	 -Credential $cred
+	 -Authentication Negotiate
+
+w efekcie plik z serwera pobiera sie na dysk c:\
+
+ustawiam zmienna job, wpisuje komende:
+
+ $job = Start-BitsTransfer
+	 -Source http://szuflandia.pjwstk.edu.pl/~t0meck/uko/ps-info.ps1
+	 -Destination "C:\"
+	 -Credential $cred
+	 -Authentication Negotiate
+	 -Asynchronous
+	 -DisplayName "Moj Bits Transfer"
+
+nastepnie pobieram plik w tle przy pomocy komendy:
+
+ Complete-BitsTransfer -BitsJob $job
+
+w efekcie pobiera sie plik z serwera i zapsuje na dysku c:
+wszystko odbywa sie w tle i nie blokuje konsoli
+
+
+wpsije komende:
+
+ Measure-Command {Get-ChildItem -Path C:\Windows} 
+
+otrzymuje takie dane:
+
+Days              : 0
+Hours             : 0
+Minutes           : 0
+Seconds           : 0
+Milliseconds      : 8
+Ticks             : 80602
+TotalDays         : 9,32893518518518E-08
+TotalHours        : 2,23894444444444E-06
+TotalMinutes      : 0,000134336666666667
+TotalSeconds      : 0,0080602
+TotalMilliseconds : 8,0602
+
+jest to informacja ile czasu zajelo wyslistowanie komendy Get-ChildIthem
+- w folderze C:\Windows zajelo to u mnie 8 ms
+- w folderze C:\Windows\system32 zajelo to 77 ms
+
+tak! jest na to alias ktory nazywa sie zaskakujaco podobnie jak w bash-u
+nazywa sie:
+
+ ls
+
+wpisuje komende:
+
+  ls C:\ | %{Sleep -Milliseconds 250; return $_} | Format-Table
+
+otrzymuje tabele z informacjami co znajduje sie na dysku c:
+- uprawnienia
+- data modyfikacji
+- wielkosc
+- nazwa
+wyniki linijki sa wyswietlane co 250 ms
+
+wpisuje komende: 
+ 
+ & C:\Windows\notepad.exe
+
+uruchamia sie program notepad w srodowisku graficznym
+
+wpisuje komende:
+ 
+ Get-PSDrive
+
+otrzymuje table:
+
+Name           Used (GB)     Free (GB) Provider      Root                                               CurrentLocation
+----           ---------     --------- --------      ----                                               ---------------
+Alias                                  Alias
+C                 280,00        209,98 FileSystem    C:\                                               Windows\system32
+Cert                                   Certificate   \
+Env                                    Environment
+Function                               Function
+HKCU                                   Registry      HKEY_CURRENT_USER
+HKLM                                   Registry      HKEY_LOCAL_MACHINE
+Variable                               Variable
+WSMan                                  WSMan
+
+widac ze powershell ma dostep do wielu rzeczy
+
+wpisuje komende:
+
+ cd hklm:
+
+jestem w rejestrze
+
+zmieniam lokalizacje przy pomocy komendy:
+
+ cd .\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+
+wpisuje komende:
+
+ls | %{Get-ItemProperty $_.pspath |
+	 Select-Object DisplayName, InstallDate, UninstallString |
+	 Format-Table -AutoSize
+
+otrzymuje piekna liste zainstalowanych programow na moim komputerze
+
+kolejnego polecenia nie wykonam bo nie odinstalowywac
+
+wpisuje komende:
+
+ Get-WmiObject -Class Win32_Product |
+	 ?{$_.Vendor.toLower() -like "*microsoft*"} |
+	 Select-Object Name, Vendor |
+	 Format-Table -AutoSize
+
+otrzymuje piekna liste zainstalowany programow microsoftu
+i chce zeby te programy tam zostaly
+
+wpisuje komende:
+
+ Get-PSDrive
+
+otrzymuje:
+
+- dyski z pojedynczymi literkami. To normalne dyski w windowsie.
+
+- dyski HKML i HKCU to dyski dające dostęp do rejestru.
+
+- Alias - lista wszystkich zdefiniowanych aliasów w bierzącej sesji.
+	 Tam są m.in. ls, dir, ?, %
+
+- Cert - magazyn certyfikatów TLS/SSL stosowanych do szyfrowania danych.
+	 Głównie połączeń sieciowych ale też i emaili czy podpisywania danych
+	 by można było sprawdzić czy treść np. dokumentu nie została zmodyfikowana.
+	 Swoją drogą skrypty PowerShell-owe też można podpisać cyfrowo
+
+- Env - zmienne środowiskowe w bierzącej sesji.
+
+- Function - tu są wszystkie zdefiniowane w bierzącej sesji funkcje,
+	 które można uruchomić.
+
+- Variable - zmienne utworzone i dostępne w bierzącej sesji.
+	 NIE SĄ to zmienne środowiskowe tylko takie zmienne lokalne.
+
+- WSMan - dostęp do całego systemu WMI. Czyli to co powyżej było robione poprzez
+	 Get-WmiObject można by było spróbować pobrać z tego dysku
+
+- GH - GitHub - tak, można po githubie "chodzić" w PowerShell-u
+
+- AD - ActiveDirectory - dodaje dysk dający dostęp do ActiveDirectory
+
+
+
+
+laduje biblioteke System.Windows.Forms:
+
+[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+
+przydzielam sciezke z ikona:
+
+$icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+
+buduje nowy obiekt Forms:
+
+$myNotification = New-Object System.Windows.Forms.NotifyIcon
+
+rownie dobrze mozna budowac tu np.:
+- window
+- button
+- timer
+- text
+- label
+
+przydzielam ikone:
+
+$myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+$myNotification.BalloonTipIcon = 'Error'
+
+ustalam tekst zawiadomienia:
+
+$myNotification.BalloonTipText = "Your cat has meowed!" 
+
+ustalam tytul obiektu
+
+$myNotification.BalloonTipTitle = "Cat Error"
+
+ustalam widocznosc:
+
+$myNotification.Visible = $True 
+$myNotification.ShowBalloonTip(10000)
+
+
+mozna zbudowac funkcje:
+
+function GiveMePopup {
+    param(
+        [Parameter(Mandatory=$true)]
+        $Text,
+   
+        [Parameter(Mandatory=$true)]
+        $Title,
+   
+        [ValidateSet('None', 'Info', 'Warning', 'Error')]
+        $Icon = 'Info',
+
+        $Timeout = 10000
+    )
+    [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+    $icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+    $myNotification = New-Object System.Windows.Forms.NotifyIcon
+    $myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+    $myNotification.BalloonTipIcon = $Icon
+    $myNotification.BalloonTipText = $Text 
+    $myNotification.BalloonTipTitle = $Title
+    $myNotification.Visible = $True 
+    $myNotification.ShowBalloonTip(1000)
+}
+
+a nastepnie wywolac ja taki sposob z licznikiem i:
+
+For($i = 1; $i -le 3; $i++) {
+    GiveMePopup -Text "WTF-second passed!" -Title "WTF Notification" -Icon Info
+}
+
+powiadomienie wyskoczy trzy razy
+
+

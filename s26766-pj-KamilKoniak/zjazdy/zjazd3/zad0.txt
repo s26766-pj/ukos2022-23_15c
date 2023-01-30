@@ -1,0 +1,63 @@
+1. przejdz do swojego katalogu domowego
+
+uzywam komendy cd
+
+2. wydaj komende ls -a
+
+ls to komenda ktora wyswietla liste plikow, ang. list
+argument -a powoduje wyswietlenie plikow zaczynajacych sie od .
+wywoluje ls -a
+
+3. zobacz ile plikow wypisalo
+
+pojawila sie lista plikow i folderow, rowniez tych jak domniemam ukrytych zaczynajacych sie od symbolu .
+nazwy katalogow sa wyswietlane w kolorze fioletowym a nazwy plikow w kolorze zielonym
+
+4. teraz wydaj komende ls -a | grep D
+
+komenda grep wypisuje wiersze pasujace do wzorca
+wydaje komende ls -a | grep D
+
+5. zobacz ile teraz jest wynikow, co sie stalo?
+
+wynikow jest znacznie mniej
+wywolanie komendy grep D gdzie litera D jest wzorcem:
+spowodowalo wypisanie nazw folderow i plikow zawierajacych wzorzec czyli wielkiej litery D
+
+6. wykonaj komende ls -a | grep > lis ta_plikow_z_literka_d.txt
+
+znam komende ls i grep wiec wywoluje powyzsza komende
+
+7. zobacz czy utworzyl sie jakis plik?
+
+wpsiuje komende ls i widze nowy plik
+
+7a. jaka jest jego tresc?
+
+jest to lista plikow i folderow zawierajacych w nazwie nasz wzorzec czyli wielka litere D
+
+7b. co znaczy | ?
+
+potok ang. pipe jest lacznikiem pomiedzy procesami 
+jest uzywany do przesylania z wyjscia jednego procesu (stdout) na wejscie drugiego (stdin)
+
+7c. co znaczy > ?
+
+przekierowanie standardowego wyjscia (stdout) do pliku (nadpisywanie)
+
+8. a teraz wykonaj komende ls -a | grep D | tee lista_plikow_z_literka_d_2.txt
+
+komenda tee czyta ze standardowego wejścia i zapisuje na standardowe wyjście oraz do pliku
+wykonuje powyzsza komende
+
+9. zobacz czy utworzyl sie plik?
+
+wpisuje komende ls i widze nowy plik
+
+9a. jaka jest tresc wzgledem poprzedniej proby bez programu tee?
+
+tresc jest identyczna wzgledem poprzeniej proby
+
+9b. co robi program tee?
+
+czyta stdin i wysyla do stdout wiec widzimy w konsoli jakie dane program zapisuje do pliku

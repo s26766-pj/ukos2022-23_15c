@@ -1,0 +1,15 @@
+http://www.robelle.com/smugbook/regexpr.html
+
+    cat report.c              {prints file on stdout, no pauses}
+    cat -v -e -t dump         {show non-printing characters too}
+    cat >newfile              {reads from stdin, writes to 'newfile'}
+    cat rpt1.c inp.c test.s   {combine 3 files into 1}
+    more report.c             {space for next page, q to quit}
+    ps -a | more              {page through the full output of ps}
+    grep smug *.txt           {search *.txt files for 'smug'}
+
+
+% grep BOB tmpfile        {search 'tmpfile' for 'BOB' anywhere in a line}
+% grep -i -w blkptr *     {search files in CWD for word blkptr, any case}
+% grep run[- ]time *.txt  {find 'run time' or 'run-time' in all txt files}
+% who | grep root         {pipe who to grep, look for root}

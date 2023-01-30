@@ -1,0 +1,10 @@
+jak uruchomic program by nie blokowal terminala?
+
+1. gedit &
+
+2. normalnie uruchomic program 
+	a nastepnie wcisnac CTRL+Z
+
+3. stworzyc plik tekstowy nie_blokuj i nadac mu uprawnienia wykonalnosci,
+	w pliku wpisac gedit &
+	a nastepnie uruchomic plik nie_blokuj

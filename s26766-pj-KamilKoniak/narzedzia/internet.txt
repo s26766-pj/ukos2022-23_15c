@@ -1,0 +1,16 @@
+wget - pozwala na pobranie strony albo pliku z internetu a w przypadku przerwania pobierania
+ umozliwia wznownie pobierania od miejsca przerwania (o ile serwer na to zezwala).
+ Pozwala na zrobienie zrzutu calej strony wraz z podstronami do zadanej glebokosci.
+
+curl - pozwala na wyslanie wlasnego zadania http(s) do serwera wedle podanych parametrow.
+ Rowniez mozna go uzyc do pobrania pliku z Internetu ale trzeba w nim podac znacznie wiecej parametrow niz do wget.
+ Jest to narzedzie pracujace na nizszym poziomie niz wget ale dajace znacznie wiecej mozliwosci.
+ Jedna z graficznych alternatyw dla curl jest program postman.
+
+Skoro byla mowa o wget i curl to wypada jeszcze wspomniec o tych narzedziach:
+
+w3m, lynx, links, links2 - to wszystko to przegladarki internetowe w trybie tekstowym.
+ 
+ Mozna z nich skorzystac kiedy potrzebujemy na serwerze
+ na ktorym nie ma srodowiska graficznego cos poszukac w internecie.
+ Oczywiscie problemem moga byc wtedy wszelkiego rodzaju captcha na stronach internetowych.

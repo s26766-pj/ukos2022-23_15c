@@ -1,0 +1,8 @@
+jak przyspieszyc wpisywanie komend w terminalu
+
+wpisac pierwsza litere a nastepnie nacisnac klawisz TAB
+lub strzalka w gore jezeli chemy uzyskac ostatnio wpisywana komende
+
+jaki klawisz pozwala na uzupelnianie komend?
+
+oczywiscie jest to klawisz TAB

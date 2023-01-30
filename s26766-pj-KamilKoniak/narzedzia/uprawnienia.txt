@@ -1,0 +1,126 @@
+Komenda ls z opcja -l pozwala na wyswietlenie dodatkowych informacji o plikach.
+ W pierwszej kolumnie widac dosc dziwne kombinacje myslnikow i literek.
+ To jest opis uprawnien dostepu do poszczegolnych plikow.
+
+Pierwszy znak w tym ciagu okresla typ pliku:
+
+    - plik zwykly (ordinary file)
+
+    d katalog (directory)
+
+    p lacze nazwane (named pipe)
+
+    l dowiazanie symboliczne (symbolic link)
+
+    b urzadzenie blokowe (block device)
+
+    c urzadzenie znakowe (character device)
+
+    s gniazdo (socket)
+
+    i kilka innych (zaleznie od rodzaju systemu).
+
+
+Pozostalych 9 znakow tworzy 3 trojki o postaci: rwxrwxrwx
+
+gdzie na kazdej pozycji moze wystapic podana litera lub znak - .
+ Znaki te okreslaja uprawnienia dostepu do pliku.
+ Wystapienie litery oznacza, ze dane uprawnienie jest nadane.
+ Pierwsza trojka odnosi sie do uprawnien wlasciciela pliku,
+ druga - do uprawnien grupy wlasciciela, trzecia - do wszystkich innych uzytkownikow danego systemu.
+
+
+Jesli chodzi o pliki, to poszczegolne uprawnienia oznaczaja:
+
+    r uprawnienie do odczytu (read)
+
+    w uprawnienie do zapisu (write)
+
+    x uprawnienie do wykonywania (execute) (odnosi sie do programow binarnych oraz skryptow)
+
+
+W przypadku katalogow jest to troszke bardziej zawile:
+
+    r uprawnienie do zapoznania sie z zawartoscic katalogu
+	 (tj. uzyskania informacji, jakie nazwy i atrybuty plikow i katalogow w nim wystepuja);
+
+    w uprawnienie do zmiany zawartosci katalogu
+	 (tj. tworzenia i usuwania w nim plikow i katalogow, jak rowniez do zmiany ich nazw i atrybutow);
+
+    x uprawnienie do "wejscia" do danego katalogu (czyli uczynienia go swoim katalogiem biezacym).
+
+
+Nadawac i odbierac uprawnienia dostepu do pliku lub katalogu moze jego wlasciciel
+	 przy uzyciu polecenia chmod (change mode - zmien tryb). Polecenie to ma nastepujaca postac:
+
+chmod komu_jakie nazwa_obiektu
+
+nazwa_obiektu jest nazwa pliku lub katalogu,
+natomiast argument komu_jakie moze byc tworzony na kilka roznych sposobow. Stosowane sa oznaczenia:
+
+    u wlasciciel (user)
+
+    g grupa (group)
+
+    o inni (other)
+
+    a wszyscy (all)
+
+
+PRZYKlADY (Zobacz tez man chmod)
+
+    chmod g+x plik (czlonkom grupy wlasciciela do posiadanych
+	 juz wczesniej uprawnien zostaje dodane uprawnienie do wykonywania programu zawartego w danym pliku.
+	 Uprawnienia wlasciciela i innych uzytkownikow nie ulegaja zmianie)
+    W przypadku checi zapisania zmiany kilku uprawnien nalezy uzyc operatora przecinka w ten sposob:
+    chmod g+x,g-w <zasob_docelowy>
+
+    chmod o-w plik (uzytkownikom spoza grupy zostalo odebrane uprawnienie do zapisu w danym pliku,
+	 wszelkie pozostale uprawnienia dostepu - bez zmian)
+
+    chmod u=rw plik (wlasciciel ustalil, ze bedzie posiadal uprawnienie do odczytu i zapisu,
+	 ale nie do wykonywania danego pliku. Prawa grupy i innych - bez zmian)
+
+    chmod o=- plik (uzytkownikom spoza grupy zostaly odebrane wszystkie uprawnienia,
+	 wszelkie pozostale uprawnienia dostepu - bez zmian)
+
+    chmod 705 plik (cyfry 7, 0, 5 sa traktowane jako cyfry oktalne (w systemie osemkowym),
+	 stanowiace skrotowy zapis trojek bitow: 111, 000, 101.
+	 Trojki te sa odpowiednio interpretowane:
+	 wlasciciel - wszystkie uprawnienia,
+	 grupa - zadnych uprawnien,
+	 pozostali - uprawnienie do odczytu i wykonywania, ale nie do zapisu)
+
+
+Tabela cyfr oktalnych i ich odpowiednikow binarnych (taka mala sciaga):
+
+    421
+
+0 | 000
+
+1 | 001
+
+2 | 010
+
+3 | 011
+
+4 | 100
+
+5 | 101
+
+6 | 110
+
+7 | 111
+
+
+W jaki sposob przelicza sie system binarny na osemkowy w przypadku przypisywania uprawnien dostepu:
+
+101 = (1*2^2)+(0*2^1)+(1*2^0) = 1*4 + 0*2 + 1*1 = 4+0+1 = 4+1 = 5
+
+110 = (1*2^2)+(1*2^1)+(0*2^0) = 1*4 + 1*2 + 0*1 = 4+2 = 6
+
+Mozna takze sumowac szybko bity (cyfry nad kolumnami z bitami w powyzszej sciagawce):
+
+(rw-) 110 = 4+2 = 6
+
+(r-x) 101 = 4+1 = 5

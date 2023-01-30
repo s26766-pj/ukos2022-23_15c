@@ -1,0 +1,31 @@
+Kazdy proces na wiekszosci systemow operacyjnych ma przypisane 3 strumienie.
+Domyslnie jest tak, ze:
+
+0. Strumien wyjsciowy to terminal (stdout)
+1. Strumien wejsciowy to klawiatura (stdin)
+2. Strumien wyjscia bledow to tez terminal (stderr)
+
+INFO: Gdy chcemy to mozna stworzyc wiecej strumieni jednakze powyzsze 3 sa dostepne automatycznie.
+
+Strumienie mozna przekierowywac. Tak wiec proces mozna rozumiec jako taka czarna skrzynke:
+
+Mozna takie czarne skrzynki laczyc:
+
+Do przekierowywania strumieni sluza:
+
+    > Przekierowanie standardowego wyjscia (stdout) do pliku (nadpisywanie)
+
+    >> Przekierowanie standardowego wyjscia (stdout) do pliku (dopisywanie)
+
+    2> Przekierowanie standardowego wyjscia bledow (stderr) do pliku (nadpisywanie)
+
+    2>> Przekierowanie standardowego wyjscia bledow (stderr) do pliku (dopisywanie)
+
+    A | B Przekierowanie standardowego wyjscia (stdout) programu A
+    na standardowe wejscie (stdin) programu B
+
+    A < B przekierowanie zawartosci pliku B na standardowe wejscie (stdin) programu A
+
+    2>&1 Przekierowanie standardowego wyjscia bledow (stderr)
+    na standardowe wyjscie (stdout) - polaczenie strumieni
+

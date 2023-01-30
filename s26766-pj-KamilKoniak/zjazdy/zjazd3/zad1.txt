@@ -1,0 +1,16 @@
+1a. Jak myślisz, co oznacza znak zapytania w kolumnie 2?
+- znak zapytania pojawia się w kolumnie TTY, jest to protokol do komunikacji poprzez teletekst ang. teletypewriter.
+ Jest to sposob komunikowania się, pomiedzy uzytkownikiem i maszyna,
+ bash czyli terminal korzysta z TTY czyli ja uzytkownik wpisuje tekst 
+/ komunikat do maszyny, a maszyna odpowiada w taki sam sposob czyli poprzez tekst.
+ Przy procesach które nie korzystaja z terminala pojawia się ?
+- tak to rozumiem, a odpowiedzi udzielilem na bazie informacji z:
+www.gnu.org, stackoverflow.com i support.microsoft.com
+
+1b.
+
+Wyświetl wszystkie procesy bash
+- ps -C bash
+- ps axu | grep bash
+Wyświetl wszystkie procesy należące do użytkownika root
+- ps -u root

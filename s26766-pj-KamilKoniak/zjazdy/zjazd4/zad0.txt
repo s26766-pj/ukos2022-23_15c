@@ -1,0 +1,5 @@
+jesli nie moge zalogowac sie na koncie uczelnianym to prawdopodobnie
+
+- nie mam polaczenia z internetem
+- serwer nie dziala
+- nie mam uprawnien dostepu do serwera

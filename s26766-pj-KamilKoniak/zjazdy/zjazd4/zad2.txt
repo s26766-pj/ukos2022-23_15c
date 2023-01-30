@@ -1,0 +1,3 @@
+Jak utworzyc poddrzewo katalogow w jan/kowalski w katalogu ale za pomoca jednej komendy?
+
+mkdir -p ~/tmp/ukos/kot/ma/ale/jan/kowalski
